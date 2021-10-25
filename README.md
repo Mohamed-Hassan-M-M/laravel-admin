@@ -100,7 +100,7 @@ For activity log please read `spatie/laravel-activitylog` [docs](https://docs.sp
 
 ## Author
 
-[Sohel Amin](http://www.sohelamin.com) :email: [Email Me](mailto:sohelamincse@gmail.com)
+[Acme Saico](http://www.acmesaico.com)
 
 ## License
 
