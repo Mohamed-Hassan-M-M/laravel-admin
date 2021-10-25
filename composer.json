@@ -24,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "acmetemplate\\LaravelAdmin\\": "src/"
+            "Acmetemplate\\LaravelAdmin\\": "src/"
         },
         "files": [
             "src/helpers.php"
