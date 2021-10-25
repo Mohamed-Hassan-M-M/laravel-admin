@@ -1,0 +1,52 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+use Spatie\Activitylog\Traits\LogsActivity;
+use App\Traits\HasTranslations;
+{{useSoftDeletes}}
+class DummyClass extends Model
+{
+    use HasTranslations;
+    use LogsActivity;
+    {{softDeletes}}
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = '{{table}}';
+
+    {{primaryKey}}
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = {{fillable}};
+    public $translatable = {{translatable}};
+
+    {{relationships}}
+
+    /**
+     * Change activity log event description
+     *
+     * @param string $eventName
+     *
+     * @return string
+     */
+    public function getDescriptionForEvent($eventName)
+    {
+        return __CLASS__ . " model has been {$eventName}";
+    }
+
+    public function getCreatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->format('Y-m-d\TH:i:s');
+    }
+
+}

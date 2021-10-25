@@ -1,0 +1,15 @@
+@if(%4$s)
+@foreach($languages as $language)
+    <div class="form-group{{ $errors->has('%1$s') ? 'has-error' : ''}}">
+        {!! Form::label('%1$s'.'_'.$language->code, %2$s .' '. __('general.'.$language->code), ['class' => 'control-label']) !!}
+        %3$s
+        {!! $errors->first('%1$s'.'_'.$language->code, '<p class="text-danger help-block">:message</p>') !!}
+    </div>
+@endforeach
+@else
+<div class="form-group{{ $errors->has('%1$s') ? 'has-error' : ''}}">
+    {!! Form::label('%1$s', %2$s, ['class' => 'control-label']) !!}
+    %3$s
+    {!! $errors->first('%1$s', '<p class="text-danger help-block">:message</p>') !!}
+</div>
+@endif

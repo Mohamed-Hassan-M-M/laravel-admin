@@ -1,0 +1,8 @@
+<div class="form-body">
+%%formFieldsHtml%%
+</div>
+<div class="form-actions text-right">
+    <button type="submit" class="btn btn-jinja">
+        <i class="la la-check-square-o"></i> @lang('general.save')
+    </button>
+</div>

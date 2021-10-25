@@ -1,0 +1,6 @@
+<div class="checkbox">
+    <label><input @if($%%crudNameSingular%%->%%itemName%% == 1) checked="checked" @endif name="%%itemName%%" type="radio" value="{{$%%crudNameSingular%%->%%itemName%%}}"> Yes</label>
+</div>
+<div class="checkbox">
+    <label><input @if($%%crudNameSingular%%->%%itemName%% == 0) checked="checked" @endif name="%%itemName%%" type="radio" value="{{$%%crudNameSingular%%->%%itemName%%}}"> No</label>
+</div>

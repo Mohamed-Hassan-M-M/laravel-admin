@@ -1,0 +1,12 @@
+@if('%%fieldType%%' == 'datetime-local')
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">
+                <span class="la la-calendar-o"></span>
+            </span>
+        </div>
+        {!! Form::input('text', '%%itemName%%', \Carbon\Carbon::parse($%%crudNameSingular%%->%%itemName%%)->format('Y-m-d'), ('%%required%%' == 'required') ? ['class' => 'form-control pickadate-format', 'required' => 'required'] : ['class' => 'form-control pickadate-format']) !!}
+    </div>
+@else
+    {!! Form::input('%%fieldType%%', '%%itemName%%', $%%crudNameSingular%%->%%itemName%%, ('%%required%%' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+@endif
