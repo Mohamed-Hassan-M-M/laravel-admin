@@ -18,77 +18,45 @@
 @endpush
 @section('content')
     <div class="app-content content">
-        <div class="content-overlay"></div>
-            <div class="content-header row">
-                <div class="content-header-left col-md-6 col-12 mb-2">
-                    <div class="row breadcrumbs-top">
-                        <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('admin.home')}}">@lang('general.dashboard')</a>
-                                </li>
-                                <li class="breadcrumb-item active"> @lang('%%viewName%%.%%viewName%%')
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-header-right text-md-right col-md-6 col-12">
-                    <div class="btn-group">
+        @include ('layouts.admin._card_header', ['routeGroup' => str_replace('/', '', '%%routeGroup%%'), 'viewName' => '%%viewName%%', 'type' => 'index'])
+        <div class="content-body">
+            <!-- datatable -->
+            <section id="column-filtering">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">@lang('general.all') @lang('%%viewName%%.%%viewName%%')</h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                            </div>
+                            <div class="card-content show">
+                                <div class="card-body card-dashboard">
+                                    <div class="table">
+                                        <table class="table table-responsive table-striped table-bordered zero-configuration data-table w-100">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 1%">
+                                                    <input type="checkbox" id="record__select-all"/>
+                                                    <label for="record__select-all"></label>
+                                                </th>
+                                                %%formHeadingHtml%%
+                                                <th style="width: 25%;">@lang('general.action')</th>
+                                            </tr>
+                                            <tr id="searchable-row"></tr>
+                                            </thead>
+                                            <tbody>
 
-                        <a class="btn btn-jinja rounded  m-1" href="{{ url('%%routeGroup%%%%viewName%%/create') }}" > <span class="display-inline-block">@lang('general.add')</span> <i class="fa  fa-plus"></i></a>
-                        @php
-                           $routeGroup = '%%routeGroup%%';
-                           $routeGroup = str_replace('/', '.', $routeGroup);
-                        @endphp
-                        <form method="post" action="{{ route($routeGroup . '%%viewName%%.bulk_delete') }}" style="display: inline-block;">
-                            @csrf
-                            @method('delete')
-                            <input type="hidden" name="record_ids" id="record-ids">
-                            <button class="btn btn-jinja rounded  mb-1 mt-1 white buttonAnimation" type="submit" id="bulk-delete" data-animation="pulse" > <span class="display-inline-block">@lang('general.bulk_delete')</span> <i class="fa fa-trash"></i></button>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-            <div class="content-body">
-                <!-- datatable -->
-                <section id="column-filtering">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">@lang('general.all') @lang('%%viewName%%.%%viewName%%')</h4>
-                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                            
-                                </div>
-                                <div class="card-content collapse show">
-                                    <div class="card-body card-dashboard">
-                                        <div class="table">
-                                            <table class="table table-responsive table-striped table-bordered zero-configuration data-table w-100">
-                                                <thead>
-                                                <tr>
-                                                    <th style="width: 1%">
-                                                        <input type="checkbox" id="record__select-all"/>
-                                                        <label for="record__select-all"></label>
-                                                    </th>
-                                                    %%formHeadingHtml%%
-                                                    <th style="width: 25%;">@lang('general.action')</th>
-                                                </tr>
-                                                <tr id="searchable-row"></tr>
-                                                </thead>
-                                                <tbody>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-                <!--/ datatable -->
-            </div>
+                </div>
+            </section>
+            <!--/ datatable -->
+        </div>
     </div>
 @endsection
 
