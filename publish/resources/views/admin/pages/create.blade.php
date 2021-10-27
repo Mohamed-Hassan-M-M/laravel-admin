@@ -46,6 +46,7 @@
 
 @push('scripts')
     <script src="{{asset('tinymce/tinymce.min.js')}}"></script>
+    <script src="{{asset('tinymce/jquery.tinymce.min.js')}}"></script>
     <script>
         $(function () {
             tinymce.init({
