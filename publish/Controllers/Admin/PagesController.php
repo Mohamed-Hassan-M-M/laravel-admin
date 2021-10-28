@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -13,7 +14,7 @@ class PagesController extends Controller
 
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
 //        $this->middleware('can:read_users')->only(['index']);
 //        $this->middleware('can:create_users')->only(['create', 'store']);
 //        $this->middleware('can:update_users')->only(['edit', 'update']);
@@ -30,6 +31,7 @@ class PagesController extends Controller
         if ($request->ajax()) {
             $data = Page::latest();
             return DataTables::of($data)
+                ->removeColumn('content')
                 ->addColumn('record_select', function ($row){
                     $btn = '<input type="checkbox" id="record-' . $row->id . '" value="' . $row->id . '" class="record__select"/>';
                     $btn .= '<label for="record-' . $row->id . '"></label>';
@@ -59,8 +61,8 @@ class PagesController extends Controller
     public function create()
     {
         $page = new Page();
-
-        return view('admin.pages.create', compact('page'));
+        $languages = \App\Models\Language::select('code', 'name', 'id')->get();
+        return view('admin.pages.create', compact(['page', 'languages']));
     }
 
     /**
@@ -73,10 +75,18 @@ class PagesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'required_without_all:title_ar' => 'required_without_all:title_ar',
             'content' => 'required'
         ]);
+
         $requestData = $request->all();
+        $requestData['slug'] = str_slug($request->title_en, '-');
+        $requestExceptData = $request->except(['title_en', 'title_ar']);
+        $requestTranslatableData = $request->only(['title_en', 'title_ar']);
+        if(count($requestTranslatableData) > 0){
+            $requestTranslatableData = \App\Helpers\GettingMultiLanguagesFields::getMultiLanguage(['title'], $requestTranslatableData);
+            $requestData = array_merge($requestExceptData, $requestTranslatableData);
+        }
 
         Page::create($requestData);
 
@@ -93,8 +103,8 @@ class PagesController extends Controller
     public function show($id)
     {
         $page = Page::findOrFail($id);
-
-        return view('admin.pages.show', compact('page'));
+        $languages = \App\Models\Language::select('code', 'name', 'id')->get();
+        return view('admin.pages.show', compact(['page', 'languages']));
     }
 
     /**
@@ -107,8 +117,8 @@ class PagesController extends Controller
     public function edit($id)
     {
         $page = Page::findOrFail($id);
-
-        return view('admin.pages.edit', compact('page'));
+        $languages = \App\Models\Language::select('code', 'name', 'id')->get();
+        return view('admin.pages.edit', compact(['page', 'languages']));
     }
 
     /**
@@ -126,6 +136,14 @@ class PagesController extends Controller
             'content' => 'required'
         ]);
         $requestData = $request->all();
+        $requestData['slug'] = str_slug($request->title_en, '-');
+        $requestExceptData = $request->except(['title_en', 'title_ar']);
+        $requestTranslatableData = $request->only(['title_en', 'title_ar']);
+        if(count($requestTranslatableData) > 0){
+            $requestTranslatableData = \App\Helpers\GettingMultiLanguagesFields::getMultiLanguage(['title'], $requestTranslatableData);
+            $requestData = array_merge($requestExceptData, $requestTranslatableData);
+        }
+
 
         $page = Page::findOrFail($id);
         $page->update($requestData);

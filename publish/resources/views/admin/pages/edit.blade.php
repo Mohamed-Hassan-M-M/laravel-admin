@@ -51,7 +51,10 @@
     <script>
         $(function () {
             tinymce.init({
-                selector: '#content'
+                selector: '#content',
+                plugins: 'link',
+                menubar: 'insert',
+                toolbar: 'link'
             });
         });
     </script>

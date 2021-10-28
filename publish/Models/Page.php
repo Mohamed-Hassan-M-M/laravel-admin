@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
+use App\Traits\HasTranslations;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Page extends Model
 {
+    use HasTranslations;
     use LogsActivity;
     use SoftDeletes;
 
@@ -30,7 +32,8 @@ class Page extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['title', 'content', 'slug'];
+    public $translatable = ['title'];
 
     /**
      * Change activity log event description

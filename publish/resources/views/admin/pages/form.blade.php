@@ -1,11 +1,14 @@
 <div class="form-body">
-    <div class="form-group{{ $errors->has('title') ? 'has-error' : ''}}">
-        {!! Form::label('title', 'Title', ['class' => 'control-label']) !!}
-        {!! Form::text('title', $page->title, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
-        {!! $errors->first('title', '<p class="text-danger help-block">:message</p>') !!}
-    </div>
+    @foreach($languages as $language)
+        <div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
+            {!! Form::label('title'.'_'.$language->code, trans('pages.title') .' '. __('general.'.$language->code), ['class' => 'control-label']) !!}
+            {!! Form::text("title"."_"."$language->code", $city->getTranslation('title', $language->code), ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+
+            {!! $errors->first('title'.'_'.$language->code, '<p class="text-danger help-block">:message</p>') !!}
+        </div>
+    @endforeach
     <div class="form-group{{ $errors->has('content') ? 'has-error' : ''}}">
-        {!! Form::label('content', 'Content', ['class' => 'control-label']) !!}
+        {!! Form::label('content', trans('pages.content') .' '. __('general.'.$language->code), ['class' => 'control-label']) !!}
         {!! Form::textarea('content', $page->content, ['class' => 'form-control tinymce']) !!}
         {!! $errors->first('content', '<p class="text-danger help-block">:message</p>') !!}
     </div>
