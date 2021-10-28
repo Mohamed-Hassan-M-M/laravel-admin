@@ -52,8 +52,6 @@
             tinymce.init({
                 selector: '#content',
                 plugins: 'link',
-                menubar: 'insert',
-                toolbar: 'link'
             });
         });
     </script>
