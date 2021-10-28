@@ -2,7 +2,7 @@
     @foreach($languages as $language)
         <div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
             {!! Form::label('title'.'_'.$language->code, trans('pages.title') .' '. __('general.'.$language->code), ['class' => 'control-label']) !!}
-            {!! Form::text("title"."_"."$language->code", $city->getTranslation('title', $language->code), ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+            {!! Form::text("title"."_"."$language->code", $page->getTranslation('title', $language->code), ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 
             {!! $errors->first('title'.'_'.$language->code, '<p class="text-danger help-block">:message</p>') !!}
         </div>

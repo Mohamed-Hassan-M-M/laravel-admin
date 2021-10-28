@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="card-content show">
                                     <div class="card-body">
-                                        <form method="POST" class="form form-horizontal" action="{{route($routeGroup . '%%viewName%%.store')}}"  enctype="multipart/form-data">
+                                        <form method="POST" class="form form-horizontal" action="{{route(str_replace('/', '', '%%routeGroup%%') . '%%viewName%%.store')}}"  enctype="multipart/form-data">
                                         @csrf
 
                                         @include ('%%viewTemplateDir%%.form', ['formMode' => 'create'])

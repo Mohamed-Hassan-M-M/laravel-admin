@@ -28,7 +28,7 @@
                         </div>
                         <div class="card-content collpase show">
                             <div class="card-body">
-                                <form method="POST" class="form form-horizontal" action="{{route($routeGroup . 'languages.update', $language->id)}}"  enctype="multipart/form-data">
+                                <form method="POST" class="form form-horizontal" action="{{route('admin.languages.update', $language->id)}}"  enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
 

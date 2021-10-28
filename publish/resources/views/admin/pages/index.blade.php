@@ -47,7 +47,7 @@
                                                 <label for="record__select-all"></label>
                                             </th>
                                             <th dt-type="text" dt-name="title">{{ trans('pages.title') }}</th>
-                                            <th dt-type="text" dt-name="content">{{ trans('pages.content') }}</th>
+                                            <th dt-type="text" dt-name="slug">{{ trans('pages.slug') }}</th>
                                             <th style="width: 25%;">@lang('general.action')</th>
                                         </tr>
                                         <tr id="searchable-row" @if(app()->getLocale() == 'ar') dir="rtl" @endif></tr>

@@ -24,7 +24,7 @@
                             </div>
                             <div class="card-content show">
                                 <div class="card-body">
-                                    <form method="POST" class="form form-horizontal" action="{{route($routeGroup . '%%viewName%%.update', $%%crudNameSingular%%->%%primaryKey%%)}}"  enctype="multipart/form-data">
+                                    <form method="POST" class="form form-horizontal" action="{{route(str_replace('/', '', '%%routeGroup%%') . '%%viewName%%.update', $%%crudNameSingular%%->%%primaryKey%%)}}"  enctype="multipart/form-data">
                                     @method('PUT')
                                     @csrf
 

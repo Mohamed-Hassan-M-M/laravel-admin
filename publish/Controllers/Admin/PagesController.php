@@ -38,11 +38,11 @@ class PagesController extends Controller
                     return $btn;
                 })
                 ->addColumn('actions', function ($row){
-                    $btn = '<a href="'. route('admin.pages.edit', $row->id) .'" class="btn btn-warning btn-sm"><i class="la la-lg la-pencil-square-o"></i> </a>';
-                    $btn .= '<a href="'. route('admin.pages.show', $row->id) .'" class="btn btn-primary btn-sm ml-1 mr-1"><i class="la la-lg la-eye"></i> </a>';
+                    $btn = '<a href="'. route('admin.pages.edit', $row->id) .'" class="btn btn-warning btn-sm"><i class="fas fa-lg fa-edit"></i> </a>';
+                    $btn .= '<a href="'. route('admin.pages.show', $row->id) .'" class="btn btn-primary btn-sm ml-1 mr-1"><i class="fas fa-lg fa-eye"></i> </a>';
                     $btn .= '<form action="'. route('admin.pages.destroy', $row->id) .'" class="my-1 my-xl-0" method="post" style="display: inline-block;">';
                     $btn .= '<input name="_method" type="hidden" value="DELETE"><input name="_token" type="hidden" value="'.csrf_token().'">';
-                    $btn .= '<button type="submit" class="btn btn-danger btn-sm delete"><i class="la la-lg la-trash"></i> </button>';
+                    $btn .= '<button type="submit" class="btn btn-danger btn-sm delete"><i class="fas fa-lg fa-trash"></i> </button>';
                     $btn .= '</form>';
                     return $btn;
                 })

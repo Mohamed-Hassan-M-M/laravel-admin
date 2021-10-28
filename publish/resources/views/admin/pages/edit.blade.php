@@ -26,9 +26,9 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="card-content collpase show">
+                        <div class="card-content show">
                             <div class="card-body">
-                                <form method="POST" class="form form-horizontal" action="{{route($routeGroup . 'pages.update', $page->id)}}"  enctype="multipart/form-data">
+                                <form method="POST" class="form form-horizontal" action="{{route('admin.pages.update', $page->id)}}"  enctype="multipart/form-data">
                                     @method('PUT')
                                     @csrf
 
@@ -46,14 +46,12 @@
 @endsection
 
 @push('scripts')
-    <script src="{{asset('tinymce/tinymce.min.js')}}"></script>
-    <script src="{{asset('tinymce/jquery.tinymce.min.js')}}"></script>
+    <script src="{{asset('ckeditor4/ckeditor.js')}}"></script>
+    <script src="{{asset('ckeditor4/adapters/jquery.js')}}"></script>
+
     <script>
         $(function () {
-            tinymce.init({
-                selector: '#content',
-                plugins: 'link',
-            });
+            $('#content').ckeditor();
         });
     </script>
 @endpush
