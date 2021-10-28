@@ -38,7 +38,7 @@
                                         <tr>
                                             <th>ID</th><td>{{ $page->id }}</td>
                                         </tr>
-                                        <tr><th> {{ trans('pages.title') }} @lang('general.'.'en') </th><td> {{ $page->getTranslation('title','en') }} </td></tr><tr><th> {{ trans('pages.title') }} @lang('general.'.'ar') </th><td> {{ $page->getTranslation('title','ar') }} </td></tr><tr><th> {{ trans('pages.slug') }} </th><td> {{ $page->slug }} </td></tr><tr><th> {{ trans('pages.content') }} </th><td> {{ $page->content }} </td></tr>
+                                        <tr><th> {{ trans('pages.title') }} @lang('general.'.'en') </th><td> {{ $page->getTranslation('title','en') }} </td></tr><tr><th> {{ trans('pages.title') }} @lang('general.'.'ar') </th><td> {{ $page->getTranslation('title','ar') }} </td></tr><tr><th> {{ trans('pages.slug') }} </th><td> {{ $page->slug }} </td></tr><tr><th> {{ trans('pages.content') }} </th><td> {!! $page->content !!} </td></tr>
                                         </tbody>
                                     </table>
                                 </div>

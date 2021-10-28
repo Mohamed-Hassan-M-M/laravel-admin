@@ -8,6 +8,7 @@ use App\Models\Page;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Str;
 
 class PagesController extends Controller
 {
@@ -79,8 +80,9 @@ class PagesController extends Controller
             'content' => 'required'
         ]);
 
+        dd($request->all());
         $requestData = $request->all();
-        $requestData['slug'] = str_slug($request->title_en, '-');
+        $requestData['slug'] = Str::slug($request->title_en, '-');
         $requestExceptData = $request->except(['title_en', 'title_ar']);
         $requestTranslatableData = $request->only(['title_en', 'title_ar']);
         if(count($requestTranslatableData) > 0){
@@ -132,11 +134,11 @@ class PagesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'required_without_all:title_ar' => 'required_without_all:title_ar',
             'content' => 'required'
         ]);
         $requestData = $request->all();
-        $requestData['slug'] = str_slug($request->title_en, '-');
+        $requestData['slug'] = Str::slug($request->title_en, '-');
         $requestExceptData = $request->except(['title_en', 'title_ar']);
         $requestTranslatableData = $request->only(['title_en', 'title_ar']);
         if(count($requestTranslatableData) > 0){
