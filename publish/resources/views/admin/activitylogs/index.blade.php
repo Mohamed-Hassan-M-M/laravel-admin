@@ -94,7 +94,7 @@
     <script>
         $(function () {
 
-            const dataTablesLanguageLink = '{{(app()->getLocale() == 'ar')? asset('admin-assets/datatable-lang/ar.json') : ''}}';
+            const dataTablesLanguageLink = '{{(app()->getLocale() == 'ar')? asset('datatables/lang/ar.json') : ''}}';
             $(".data-table").dataTable().fnDestroy();
             var table = $('.data-table').DataTable({
                 dom: "fltipr",

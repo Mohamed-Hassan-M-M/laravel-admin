@@ -64,4 +64,5 @@
         var dataTablesSearchLink = '{{url('admin/users')}}';
         var dataTablesLanguageLink = '{{(app()->getLocale() == 'ar')? asset('admin-assets/datatable-lang/ar.json') : ''}}';
     </script>
+    <script src="{{asset('datatables/js/datatable.js')}}"></script>
 @endpush

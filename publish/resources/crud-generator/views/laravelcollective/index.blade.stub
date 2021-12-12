@@ -66,4 +66,5 @@
         var dataTablesSearchLink = '{{url('%%routeGroup%%%%viewName%%')}}';
         var dataTablesLanguageLink = '{{(app()->getLocale() == 'ar')? asset('datatables/lang/ar.json') : ''}}';
     </script>
+    <script src="{{asset('datatables/js/datatable.js')}}"></script>
 @endpush
