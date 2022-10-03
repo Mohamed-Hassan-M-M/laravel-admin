@@ -2,8 +2,9 @@
 An admin panel for managing users, roles, permissions & crud.
 
 ### Requirements
-    Laravel >=5.5
+    Laravel >=7
     PHP >= 7.0
+    Now we Support Now Laravel 9
 
 ## Features
 - User, Role & Permission Manager
