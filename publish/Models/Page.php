@@ -3,14 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 use App\Traits\HasTranslations;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Page extends Model
 {
     use HasTranslations;
-    use LogsActivity;
     use SoftDeletes;
 
     /**
@@ -45,5 +44,10 @@ class Page extends Model
     public function getDescriptionForEvent($eventName)
     {
         return __CLASS__ . " model has been {$eventName}";
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
     }
 }
