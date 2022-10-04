@@ -71,6 +71,10 @@ class LaravelAdminCommand extends Command
 
         $routes =
             <<<EOD
+            <?php
+
+use Illuminate\Support\Facades\Route;
+
 Route::get('admin', '{$controllerNamespace}AdminController@index');
 Route::resource('admin/roles', '{$controllerNamespace}RolesController');
 Route::resource('admin/permissions', '{$controllerNamespace}PermissionsController');

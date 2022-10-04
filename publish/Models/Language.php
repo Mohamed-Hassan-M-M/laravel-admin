@@ -5,13 +5,12 @@ namespace App\Models;
 use App\Traits\HasTranslations;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Activitylog\Traits\LogsActivity;
 
 class Language extends Model
 {
     use HasTranslations;
-    use LogsActivity;
     use SoftDeletes;
 
 
@@ -23,10 +22,10 @@ class Language extends Model
     protected $table = 'languages';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -56,4 +55,8 @@ class Language extends Model
         return Carbon::parse($this->attributes['created_at'])->format('Y-m-d\TH:i:s');
     }
 
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
+    }
 }
