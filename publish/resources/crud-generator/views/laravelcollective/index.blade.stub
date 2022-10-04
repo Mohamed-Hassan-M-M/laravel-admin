@@ -18,7 +18,20 @@
 @endpush
 @section('content')
     <div class="app-content content">
-        @include ('layouts.admin._card_header', ['routeGroup' => str_replace('/', '', '%%routeGroup%%'), 'viewName' => '%%viewName%%', 'type' => 'index'])
+        <div class="content-header row">
+                <div class="content-header-left col-md-6 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="breadcrumb-wrapper col-12">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{route(str_replace('/', '', '%%routeGroup%%') .'.home')}}">@lang('general.dashboard')</a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="{{route(str_replace('/', '', '%%routeGroup%%') . '.' . '%%viewName%%' . '.index')}}">@lang('%%viewName%%'. '.' . '%%viewName%%')</a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>    
+            </div>
         <div class="content-body">
             <!-- datatable -->
             <section id="column-filtering">
