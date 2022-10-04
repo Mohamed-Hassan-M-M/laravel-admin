@@ -10,7 +10,22 @@
 
 @section('content')
     <div class="app-content content">
-        @include ('layouts.admin._card_header', ['routeGroup' => 'admin', 'viewName' => 'languages', 'type' => 'create'])
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{route('admin.home')}}">@lang('general.dashboard')</a>
+                            </li>
+                            <li class="breadcrumb-item"><a
+                                    href="{{route('admin.languages.index')}}">@lang('languages.languages')</a>
+                            </li>
+                            <li class="breadcrumb-item active"> @lang('general.create')</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="content-body">
             <!-- Form Section -->
             <section class="row">
